@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vivo/components/RadiusBox.dart';
+import 'package:vivo/pages/CityDetail.dart';
 
 class IndexPage extends StatefulWidget {
   @override
@@ -129,39 +130,49 @@ class _IndexPage extends State<IndexPage> {
 
   // grid子项
   Widget _getContainer() {
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) {
+            return CityDetail();
+          },
+        ));
+      },
+      child: Container(
 //    color: Colors.green,
-      child: RadiusBox(
-        child: Column(
-          children: [
-            SizedBox(
-              width: double.maxFinite,
-              height: 60,
-              child: Image.network(
-                "https://img2.woyaogexing.com/2020/06/10/ceed483c1df945b7bd01e0a22c6bf96b!400x400.jpeg",
-                fit: BoxFit.fill,
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  left: BorderSide(width: 1, color: Color(0xffdddddd)),
-                  bottom: BorderSide(width: 1, color: Color(0xffdddddd)),
-                  right: BorderSide(width: 1, color: Color(0xffdddddd)),
+        child: RadiusBox(
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.maxFinite,
+                height: 60,
+                child: Image.network(
+                  "https://img2.woyaogexing.com/2020/06/10/ceed483c1df945b7bd01e0a22c6bf96b!400x400.jpeg",
+                  fit: BoxFit.fill,
                 ),
               ),
-              alignment: Alignment.center,
-              child: Padding(
-                  padding: EdgeInsets.only(
-                    top: 6,
-                    bottom: 6,
+              Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    left: BorderSide(width: 1, color: Color(0xffdddddd)),
+                    bottom: BorderSide(width: 1, color: Color(0xffdddddd)),
+                    right: BorderSide(width: 1, color: Color(0xffdddddd)),
                   ),
-                  child: Text(
-                    "4元起",
-                    style: TextStyle(color: Colors.orangeAccent, fontSize: 12),
-                  )),
-            )
-          ],
+                ),
+                alignment: Alignment.center,
+                child: Padding(
+                    padding: EdgeInsets.only(
+                      top: 6,
+                      bottom: 6,
+                    ),
+                    child: Text(
+                      "4元起",
+                      style:
+                          TextStyle(color: Colors.orangeAccent, fontSize: 12),
+                    )),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -228,40 +239,50 @@ class _IndexPage extends State<IndexPage> {
             itemCount: 10,
             itemExtent: 150,
             itemBuilder: (BuildContext context, int idx) {
-              return Padding(
-                padding: EdgeInsets.all(5),
-                child: RadiusBox(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: double.maxFinite,
-                        height: 60,
-                        child: Image.network("https://img2.woyaogexing.com/2020/06/11/1cc80fb092ec4fa1a176ce626e11b0f8!400x400.jpeg", fit: BoxFit.cover,),
-                      ),
-                      Container(
-                        width: double.maxFinite,
-                        height: 30,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          border: new Border.all(width: 1, color: Colors.black),
-//                          border: Border(
-//                            left: BorderSide(width: 1, color: Colors.black),
-//                            bottom: BorderSide(width: 1, color: Colors.black),
-//                            right: BorderSide(width: 1, color: Colors.black),
-//                          ),
-                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(4),bottomLeft: Radius.circular(4))
-                        ),
-                        child: Text("dsdsds"),
-                      )
-                    ],
-                  ),
-                ),
-              );
+              return renderCityItem();
             },
           ),
         )
       ]),
     ));
+  }
+
+  // 图例子项
+
+  Widget renderCityItem() {
+    return Padding(
+      padding: EdgeInsets.all(5),
+      child: RadiusBox(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              width: double.maxFinite,
+              height: 60,
+              child: Image.network(
+                "https://img2.woyaogexing.com/2020/06/11/1cc80fb092ec4fa1a176ce626e11b0f8!400x400.jpeg",
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              width: double.maxFinite,
+              height: 30,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  border: new Border.all(width: 1, color: Colors.black),
+//                          border: Border(
+//                            left: BorderSide(width: 1, color: Colors.black),
+//                            bottom: BorderSide(width: 1, color: Colors.black),
+//                            right: BorderSide(width: 1, color: Colors.black),
+//                          ),
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(4),
+                      bottomLeft: Radius.circular(4))),
+              child: Text("dsdsds"),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
