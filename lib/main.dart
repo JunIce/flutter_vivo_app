@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './pages/Index.dart';
 import './pages/Order.dart';
 import './pages/Me.dart';
+import './pages/Xiaohongshu.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -35,18 +35,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _tabIndex = 0;
-  List<Widget> _pages = [
-    IndexPage(),
-    OrderPage(),
-    MePage()
-  ];
-
+  List<Widget> _pages = [IndexPage(), OrderPage(), MePage(), XiaohongshuPage()];
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       body: _pages[_tabIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _tabIndex,
@@ -54,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.shop), title: Text("商店")),
           BottomNavigationBarItem(icon: Icon(Icons.camera), title: Text("订单")),
-          BottomNavigationBarItem(icon: Icon(Icons.casino), title: Text("我"))
+          BottomNavigationBarItem(icon: Icon(Icons.casino), title: Text("我")),
+          BottomNavigationBarItem(icon: Icon(Icons.nfc), title: Text("小红书")),
         ],
         selectedItemColor: Colors.blue,
         unselectedItemColor: Color(0xff999999),

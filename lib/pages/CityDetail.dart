@@ -11,17 +11,16 @@ class _CityDetail extends State<CityDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black, size: 16),
-        backgroundColor: Colors.white,
-        textTheme: TextTheme(headline3: TextStyle(color: Colors.black)),
-        title: Text(
-          "中国澳门",
-          style: TextStyle(color: Colors.black),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black, size: 16),
+          backgroundColor: Colors.white,
+          textTheme: TextTheme(headline3: TextStyle(color: Colors.black)),
+          title: Text(
+            "中国澳门",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
-      ),
-      body: renderBody(),
-    );
+        body: renderBody());
   }
 
   Widget renderBody() {
